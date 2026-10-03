@@ -1,0 +1,55 @@
+/* Laufwerk (nl_archiv/index.cfm): Jede Datei ist eine eigene einzeilige Tabelle. Feste Spaltenbreiten
+   lassen die Spalten über alle Tabellen hinweg fluchten. Nur CSS, kein eigenes JS-Modul nötig. */
+
+/* Themen-Gruppe: Kopfzeile ohne weiße Zellabstände. Die Gruppen sind im Markup teils ineinander
+   verschachtelt (unvollständig geschlossene Tabellen), daher keine Kartenrahmen. */
+html.txr-theme[data-txr-page="nl_archiv-index"] table[cellspacing="2"] {
+  border-spacing: 0;
+}
+html.txr-theme[data-txr-page="nl_archiv-index"] table[cellspacing="2"] > tbody > tr:first-child > td {
+  padding: 12px 14px !important;
+}
+html.txr-theme[data-txr-page="nl_archiv-index"] table[cellspacing="2"] > tbody > tr:first-child p {
+  background: transparent !important;
+  margin: 2px 0 0 !important;
+}
+html.txr-theme[data-txr-page="nl_archiv-index"] table[cellspacing="2"] s {
+  color: var(--txr-muted);
+  font-size: 12px;
+}
+
+/* Datei-Zeilen: keine grauen Kacheln, Trennlinie unten */
+html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable {
+  border-collapse: collapse;
+  margin: 0;
+  width: 100%;
+}
+html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable > tbody > tr {
+  background-color: transparent !important;
+}
+html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable > tbody > tr > td {
+  padding: 10px !important;
+  background-color: transparent !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid var(--txr-border);
+  vertical-align: middle;
+}
+html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable > tbody > tr:hover > td {
+  background-color: var(--txr-surface-2) !important;
+}
+html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable small {
+  color: var(--txr-muted);
+}
+
+/* Spalten: Icon | Datei | Größe | Einsteller | Datum | Aktion. Unter 520px baut die Seite die
+   Zeilen selbst zu Karten um (.myTable), dort greifen die festen Breiten nicht. */
+@media (min-width: 521px) {
+  html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable {
+    table-layout: fixed;
+  }
+  html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable td:nth-child(1) { width: 44px; }
+  html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable td:nth-child(3) { width: 80px; color: var(--txr-muted); }
+  html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable td:nth-child(4) { width: 23%; }
+  html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable td:nth-child(5) { width: 100px; color: var(--txr-muted); }
+  html.txr-theme[data-txr-page="nl_archiv-index"] table.inner-table.myTable td:nth-child(6) { width: 120px; }
+}

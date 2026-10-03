@@ -1,0 +1,137 @@
+/* Äußere Seite. Das Original arbeitet viel mit !important und Inline-Styles,
+   daher hier ebenfalls !important plus höhere Spezifität über html.txr-shell. */
+
+/* Grau statt Weiß, auch solange der Inhalt im iFrame noch lädt (sonst blitzt die Fläche weiß auf). */
+html.txr-shell,
+html.txr-shell body,
+html.txr-shell #content-iframe {
+  background: var(--txr-bg) !important;
+}
+html.txr-shell body {
+  animation: none !important;
+}
+
+/* Top-Navigation */
+html.txr-shell body:not(.fullscreen-mode) #top-nav-container {
+  height: var(--txr-nav-h) !important;
+  min-height: var(--txr-nav-h) !important;
+}
+html.txr-shell body:not(.fullscreen-mode) #main-area-container {
+  height: calc(100% - var(--txr-nav-h)) !important;
+}
+html.txr-shell #top-nav-container {
+  background: var(--txr-surface) !important;
+  border-bottom: 1px solid var(--txr-border);
+  box-sizing: border-box;
+}
+html.txr-shell #top-nav-container .both {
+  display: flex !important;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+  padding: 0 64px 0 16px; /* rechts Platz für den Vollbild-Button */
+  box-sizing: border-box;
+}
+html.txr-shell #top-nav-container .logo {
+  width: auto !important;
+  margin: 0 !important;
+  position: static !important;
+}
+html.txr-shell #top-nav-container .logo-img {
+  width: 36px !important;
+  height: 36px !important;
+  position: static !important;
+  display: block;
+  border-radius: 8px;
+}
+html.txr-shell #top-nav-container .menu {
+  display: flex !important;
+  align-items: center;
+  flex: 1;
+  gap: 4px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+html.txr-shell #top-nav-container .item {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 8px 14px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: var(--txr-text) !important;
+  font: 500 14px/1 var(--txr-font) !important;
+  box-shadow: none !important;
+}
+html.txr-shell #top-nav-container .item img {
+  float: none !important;
+  order: -1;
+  height: 18px !important;
+  width: auto;
+}
+html.txr-shell #top-nav-container .item:hover {
+  background: var(--txr-hover) !important;
+}
+html.txr-shell #top-nav-container .item.active {
+  background: var(--txr-accent-soft) !important;
+  color: var(--txr-accent) !important;
+}
+html.txr-shell #top-nav-container #logout_item {
+  margin-left: auto !important;
+  color: var(--txr-muted) !important;
+}
+html.txr-shell #top-nav-container #logout_item small {
+  font-size: 13px;
+}
+
+/* Auf schmalen Screens nur Icons */
+@media (max-width: 650px) {
+  html.txr-shell #top-nav-container .both {
+    gap: 8px;
+    padding: 0 40px 0 8px;
+  }
+  html.txr-shell #top-nav-container .item {
+    font-size: 0 !important;
+    padding: 9px !important;
+    gap: 0;
+  }
+  html.txr-shell #top-nav-container .item small {
+    display: none;
+  }
+}
+
+/* Linke Navigation und Inhaltsbereich */
+html.txr-shell #main-area-container,
+html.txr-shell #left-nav-container {
+  background: var(--txr-bg) !important;
+}
+html.txr-shell #left-nav-container {
+  border-right: 1px solid var(--txr-border);
+}
+
+/* Linke Navigation: Unterpunkte. Die Seite setzt Hover- und Klickfarben inline per JS,
+   daher !important. Die aktive Markierung führt shell.js nach. */
+html.txr-shell #left-nav-container .item {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 2px 10px !important;
+  padding: 8px 12px !important;
+  border: 0 !important;
+  border-radius: var(--txr-radius-sm) !important;
+  background: transparent !important;
+  color: var(--txr-text) !important;
+  font: 500 14px/1.2 var(--txr-font) !important;
+  box-shadow: none !important;
+}
+html.txr-shell #left-nav-container .item:hover {
+  background: var(--txr-hover) !important;
+}
+html.txr-shell #left-nav-container .item.active {
+  background: var(--txr-accent-soft) !important;
+  color: var(--txr-accent) !important;
+}

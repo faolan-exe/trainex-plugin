@@ -1,0 +1,250 @@
+/* Globales Theme für alle TraiNex-Unterseiten.
+   Überschreibt das gemeinsame Basis-CSS der Seite (10pt Segoe/Verdana, graue bgcolor-Zeilen,
+   22px-Inputs). Spezifität über html.txr-theme, !important nur gegen !important oder Inline-Styles. */
+
+/* Grundlayout und Typografie */
+html.txr-theme,
+html.txr-theme body {
+  background: var(--txr-bg) !important;
+  color: var(--txr-text);
+  font-family: var(--txr-font);
+  font-size: 14px;
+  line-height: 1.5;
+}
+html.txr-theme body {
+  margin: 0;
+  padding: 20px 24px 40px;
+  animation: none;
+}
+html.txr-theme :is(p, center, table, tr, caption, td, th, form, li, label, b, i) {
+  color: inherit;
+  font-family: var(--txr-font);
+}
+html.txr-theme :is(p, center, table, tr, caption, td, th, form) {
+  font-size: 14px;
+}
+html.txr-theme :is(h1, h2) {
+  color: var(--txr-text);
+  font-family: var(--txr-font);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+html.txr-theme h1 {
+  font-size: 22px;
+}
+html.txr-theme h2 {
+  font-size: 18px;
+}
+html.txr-theme h3 {
+  color: var(--txr-text);
+  font-family: var(--txr-font);
+  font-size: 15px;
+  font-weight: 600;
+}
+html.txr-theme h4 {
+  color: var(--txr-muted);
+  font-family: var(--txr-font);
+  font-size: 12px;
+}
+/* <font face="Segoe UI"> fällt ohne Segoe (macOS, Linux) auf eine Serifenschrift zurück. */
+html.txr-theme font[face] {
+  font-family: inherit;
+}
+html.txr-theme font[size="1"],
+html.txr-theme font[size="-2"] {
+  font-size: 12px;
+}
+
+/* Links */
+html.txr-theme :is(a:link, a:visited, a:active) {
+  color: var(--txr-accent);
+  font-family: inherit;
+}
+html.txr-theme a:hover {
+  color: var(--txr-accent-hover);
+  border-bottom-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Hauptcontainer als Karte */
+html.txr-theme .headtablekt,
+html.txr-theme .headtable {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 !important;
+  padding: 16px 20px;
+  background: var(--txr-surface);
+  border: 1px solid var(--txr-border);
+  border-radius: var(--txr-radius);
+  box-shadow: var(--txr-shadow);
+}
+
+/* Tabellen: graue bgcolor-Zeilen der Seite auf ruhige Flächen abbilden */
+/* Erste .inner-table-Zeile nur als Kopf, wenn noch Zeilen folgen (das Laufwerk nutzt einzeilige
+   Tabellen pro Datei). Die Seite färbt sonst jede erste Zeile #BBBBBB. */
+html.txr-theme .inner-table tr:first-child:only-child {
+  background-color: transparent;
+}
+html.txr-theme :is([bgcolor="#BBBBBB" i], [style*="background-color:#BBBBBB" i], [style*="background-color: #BBBBBB" i]),
+html.txr-theme .inner-table tr:first-child:not(:only-child) {
+  background-color: var(--txr-head) !important;
+  color: var(--txr-text) !important;
+  font-weight: 600;
+}
+html.txr-theme :is([bgcolor="#DDDDDD" i], [bgcolor="lightgray" i], [style*="background-color:#DDDDDD" i], [style*="background-color: #DDDDDD" i]) {
+  background-color: var(--txr-surface-2) !important;
+  color: var(--txr-text) !important;
+}
+html.txr-theme :is(.outer-table, .outer-table-nobox, .outer-table-full, .table-border-full) {
+  border-color: var(--txr-border) !important;
+  border-width: 1px !important;
+}
+/* <table border="1">: dunkle 3D-Rahmen auf eine helle Linie reduzieren. */
+html.txr-theme table[border]:not([border="0"]),
+html.txr-theme table[border]:not([border="0"]) > * > tr > :is(td, th) {
+  border-color: var(--txr-border);
+  border-style: solid; /* Browser-Standard outset/inset schattiert die Rahmen dunkel */
+}
+/* Original: Helligkeitsfilter, Schatten und z-index auf jeder Zeile, auch in Layout-Tabellen. */
+html.txr-theme tr:hover:not(:first-child),
+html.txr-theme tbody tr:nth-child(2):hover {
+  filter: none;
+  box-shadow: none !important;
+  z-index: auto;
+}
+/* Sticky-Kopfzeilen (Noten, Lernübersicht) und Tabellenköpfe einzelner Seiten. */
+html.txr-theme :is(table.stickyhead tr.topic-header-main, table.stickyhead tr.topic-header-secondary,
+    table.stickyhead tr.course-header, table.stickyhead tr.column-header) td,
+html.txr-theme .anw th {
+  background: var(--txr-head);
+  color: var(--txr-text);
+  box-shadow: none;
+}
+html.txr-theme .subarchive tr:hover {
+  background-color: var(--txr-hover);
+}
+
+/* Tooltips der Seite: weiße Schrift auf hellgrau ist kaum lesbar. */
+html.txr-theme .modern-tooltip {
+  background: var(--txr-text);
+  color: #fff;
+  font: 13px/1.4 var(--txr-font);
+}
+html.txr-theme .modern-tooltip::after {
+  border-top-color: var(--txr-text);
+}
+
+html.txr-theme .noresultbox {
+  background: var(--txr-surface-2);
+  border: 1px solid var(--txr-border);
+  border-radius: var(--txr-radius-sm);
+  box-shadow: none !important;
+  font-weight: 500;
+}
+html.txr-theme hr {
+  border: 0;
+  border-top: 1px solid var(--txr-border);
+}
+
+/* Formulare */
+html.txr-theme :is(input[type="text" i], input[type="password" i], input[type="email" i], input[type="number" i],
+    input[type="search" i], input[type="tel" i], input[type="url" i], input[type="date" i], input:not([type]),
+    select, textarea) {
+  min-height: 32px;
+  height: auto;
+  padding: 5px 10px;
+  color: var(--txr-text);
+  background-color: var(--txr-surface);
+  border: 1px solid var(--txr-border-strong);
+  border-radius: var(--txr-radius-sm);
+  font: 14px/1.4 var(--txr-font);
+}
+html.txr-theme select:not([multiple]) {
+  padding-right: 2rem;
+}
+html.txr-theme :is(input, select, textarea):focus {
+  outline: none;
+  border-color: var(--txr-accent);
+  box-shadow: 0 0 0 3px var(--txr-accent-soft);
+}
+/* Checkboxen und Radios zeichnet die Seite selbst (appearance: none, Haken per ::before). */
+html.txr-theme :is(input[type="checkbox" i], input[type="radio" i]) {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--txr-border-strong);
+  background-color: var(--txr-surface);
+}
+html.txr-theme input[type="checkbox" i] {
+  border-radius: 5px;
+}
+html.txr-theme :is(input[type="checkbox" i], input[type="radio" i]):hover {
+  border-color: var(--txr-accent);
+  background-color: var(--txr-surface);
+}
+html.txr-theme :is(input[type="checkbox" i], input[type="radio" i]):checked {
+  border: 1.5px solid var(--txr-accent);
+  background-color: var(--txr-accent);
+}
+html.txr-theme input[type="checkbox" i]::before {
+  border-color: #fff;
+}
+html.txr-theme input[type="radio" i]:checked {
+  background-color: var(--txr-surface);
+}
+html.txr-theme input[type="radio" i]::before {
+  background: var(--txr-accent);
+}
+
+/* Buttons. Submit = primär, alles andere sekundär. */
+html.txr-theme :is(input[type="submit" i], input[type="button" i], input[type="reset" i], button,
+    #endbutton, #endbutton_xs, #endbutton_xxs, #endbutton_xxl, .alinkbtn, .linkbtnbig) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  height: auto;
+  margin: 4px 0;
+  padding: 6px 16px;
+  color: var(--txr-text) !important;
+  background: var(--txr-surface);
+  border: 1px solid var(--txr-border-strong) !important;
+  border-radius: var(--txr-radius-sm);
+  box-shadow: var(--txr-shadow);
+  font: 500 14px/1.2 var(--txr-font);
+  cursor: pointer;
+  transform: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+html.txr-theme :is(input[type="submit" i], #endbutton, #endbutton_xxl, .linkbtnbig) {
+  color: #fff !important;
+  background: var(--txr-accent);
+  border-color: var(--txr-accent) !important;
+}
+html.txr-theme :is(input[type="button" i], input[type="reset" i], button, #endbutton_xs, #endbutton_xxs, .alinkbtn):hover {
+  background: var(--txr-hover);
+}
+html.txr-theme :is(input[type="submit" i], #endbutton, #endbutton_xxl, .linkbtnbig):hover {
+  background: var(--txr-accent-hover);
+}
+html.txr-theme :is(#endbutton, #endbutton_xs, #endbutton_xxs, #endbutton_xxl) a {
+  color: inherit !important;
+}
+
+@media (max-width: 650px) {
+  html.txr-theme body {
+    padding: 12px;
+  }
+  html.txr-theme .headtablekt,
+  html.txr-theme .headtable {
+    padding: 12px;
+  }
+}
+
+/* "(mehr)"-Links: animiertes GIF durch einen statischen Pfeil ersetzen. */
+html.txr-theme img[src*="mehr_anim.gif"] {
+  display: none;
+}
+html.txr-theme a:has(img[src*="mehr_anim.gif"])::after {
+  content: " →";
+}

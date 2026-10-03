@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "Redesign für TraiNex",
+  "version": "0.2.1",
+  "description": "Modernes, aufgeräumtes Design für TraiNex der BA Rhein-Main. Inoffiziell, nicht von Trainings-Online.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "trainex-redesign-plugin@tobisit.de",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.trainex36.de/ba-rm-trainex/*"
+      ],
+      "js": [
+        "src/early.js"
+      ],
+      "css": [
+        "src/tokens.css",
+        "src/pages/theme.css",
+        "src/pages/shell.css",
+        "src/pages/start.css",
+        "src/pages/laufwerk.css"
+      ],
+      "all_frames": true,
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.trainex36.de/ba-rm-trainex/*"
+      ],
+      "js": [
+        "src/core.js",
+        "src/recorder.js",
+        "src/pages/theme.js",
+        "src/pages/shell.js",
+        "src/pages/start.js",
+        "src/router.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "scripts": [
+      "src/background.js"
+    ]
+  }
+}

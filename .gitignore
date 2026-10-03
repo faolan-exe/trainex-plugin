@@ -1,0 +1,19 @@
+# Abhängigkeiten und Build-Ausgaben
+node_modules/
+web-ext-artifacts/
+dist/
+
+# Lokale Browser-Profile (enthalten Login-Cookies)
+.firefox-profile/
+.chrome-profile/
+
+# Snapshots und Vorschau (enthalten persönliche Daten)
+snapshots/
+.preview/
+
+# Lokaler Zustand von web-ext sign
+.amo-upload-uuid
+
+# System und Logs
+.DS_Store
+*.log

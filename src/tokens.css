@@ -1,0 +1,23 @@
+/* Design-Tokens für alle Module. Präfix --txr-, damit nichts mit dem Seiten-CSS kollidiert. */
+:root {
+  --txr-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --txr-bg: #f4f5f7;
+  --txr-surface: #ffffff;
+  --txr-surface-2: #f7f8fa;
+  --txr-head: #eceff4;
+  --txr-border: #e3e5ea;
+  --txr-border-strong: #cfd4dc;
+  --txr-text: #1d2433;
+  --txr-muted: #5f6b7a;
+  --txr-hover: #eef0f4;
+  --txr-accent: #1f46b8;
+  --txr-accent-hover: #183a9c;
+  --txr-accent-soft: #e6ecfb;
+  --txr-warn: #d9480f;
+  --txr-warn-soft: #fff1e6;
+  --txr-radius: 14px;
+  --txr-radius-sm: 8px;
+  --txr-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --txr-nav-h: 60px;
+}
+
